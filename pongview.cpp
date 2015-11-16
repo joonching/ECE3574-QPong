@@ -1,11 +1,12 @@
 #include "pongview.h"
 
 #include <QDebug>
+#include <QApplication>
 
 
 pongview::pongview(QWidget *parent):QWidget(parent)
 {
-    quit = false;
+    quit_me = false;
     this->installEventFilter(this);
     inter = new intermediate();
     QSize size(1100,900);
@@ -38,13 +39,13 @@ bool pongview::eventFilter(QObject *obj, QEvent *event)
 void pongview::choose_dir()
 {
     if(pressedKey.contains(Qt::Key_Q))
-        quit = true;
+        QApplication::quit();
 
     else if(pressedKey.contains(Qt::Key_S)&&pressedKey.contains(Qt::Key_K))
-        inter->int_move(7);
+        inter->int_move(7); //player 2 down & 1 up
 
     else if(pressedKey.contains(Qt::Key_A)&&pressedKey.contains(Qt::Key_L))
-        inter->int_move(6);
+        inter->int_move(6);//player 1 down & 2 up
 
     else if(pressedKey.contains(Qt::Key_L)&&pressedKey.contains(Qt::Key_S))
         inter->int_move(5);//player 1 & 2 up
@@ -89,5 +90,5 @@ void pongview::set_rs(int score)
 
 bool pongview::get_quit()
 {
-    return quit;
+    return quit_me;
 }

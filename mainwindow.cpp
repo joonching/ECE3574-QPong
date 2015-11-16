@@ -1,5 +1,6 @@
 #include <QWidget>
 #include "mainwindow.h"
+#include <QApplication>
 
 
 mainwindow::mainwindow(QWidget *parent) : QWidget(parent)
@@ -16,9 +17,6 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent)
     QTimer::singleShot(3000, my_ball, SLOT(delay()));
     connect(timer, SIGNAL(timeout()), g_engine , SLOT(update_me()));
     timer->start(70);
-
-    if(my_pong->quit)
-        quit();
 
     layoutH->addWidget(my_pong);
     layoutH->setAlignment(Qt::AlignHCenter);

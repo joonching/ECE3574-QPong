@@ -142,7 +142,6 @@ QPoint ball::get_points()
 
 void ball::delay()
 {
-    qDebug() << "hin";
     start = true;
 }
 

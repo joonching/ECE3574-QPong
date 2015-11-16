@@ -35,7 +35,7 @@ signals:
 
 private:
     QSet<int> pressedKey;
-    bool quit;
+    bool quit_me;
     intermediate *inter;
 };
 
