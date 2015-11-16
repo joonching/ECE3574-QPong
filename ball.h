@@ -31,6 +31,7 @@ private:
     int move_x, move_y;
     bool move_down, move_up, move_right, move_left;
     bool start;
+    int ball_speed;
 };
 
 

@@ -3,7 +3,7 @@
 
 racket::racket()
 {
-    move_incr = 30;
+    move_incr = 50;
 
     width = 30;
     height = 150;
@@ -11,8 +11,8 @@ racket::racket()
     left_y = 300;
     right_x = 1065;
     right_y = 300;
-    y_range = 735;
-    y_range2 = 10;
+    y_range = 735; //the lowest my racket can go 1100-65
+    y_range2 = 10; //the highest my racket can go
 }
 
 void racket::draw(QPainter *painter)
@@ -61,15 +61,11 @@ void racket::move_rackets(int dir_play)
 //1 = -
 void racket::move_r(int sign) //player 2
 {
-    if(sign == 0 && right_y < y_range)
-    {
+    if(sign == 0 && right_y < y_range) //move the right racket down
         right_y = right_y + move_incr;
-    }
 
-    else if(sign == 1 && right_y > y_range2)
-    {
+    else if(sign == 1 && right_y > y_range2) //move the right racket up
         right_y = right_y - move_incr;
-    }
 }
 
 //0 = +
@@ -78,14 +74,10 @@ void racket::move_l(int sign) //player 1
 {
     //qDebug() << "movel\n";
     if(sign == 0 && left_y < y_range)
-    {
         left_y = left_y + move_incr;
-    }
 
     else if(sign == 1 && left_y > y_range2)
-    {
         left_y = left_y - move_incr;
-    }
 }
 
 

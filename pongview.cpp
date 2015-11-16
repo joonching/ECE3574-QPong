@@ -6,7 +6,6 @@
 
 pongview::pongview(QWidget *parent):QWidget(parent)
 {
-    quit_me = false;
     this->installEventFilter(this);
     inter = new intermediate();
     QSize size(1100,900);
@@ -88,7 +87,4 @@ void pongview::set_rs(int score)
     inter->set_rs(score);
 }
 
-bool pongview::get_quit()
-{
-    return quit_me;
-}
+

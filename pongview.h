@@ -28,14 +28,12 @@ public:
     QPoint get_right_racket();
     void set_rs(int score);
     void set_ls(int score);
-    bool get_quit();
 
 signals:
     void send_direction(int play_dir);
 
 private:
     QSet<int> pressedKey;
-    bool quit_me;
     intermediate *inter;
 };
 

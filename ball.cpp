@@ -5,15 +5,18 @@
 ball::ball(QWidget *parent) : QWidget(parent)
 {
     px = 550;
-    py = 450;
+    int p_y = rand()%(850-20 + 1) + 20;
+    py = p_y;
     center_point = QPoint(px,py);
-    rx = 30;
-    ry = 30;
+    rx = 15;
+    ry = 15;
     move_up = false;
-    move_down = false;
+    move_down = true;
     move_right = true;
     move_left = false;
     start = false;
+    int bs = rand()%(40-5 + 1) + 5;
+    ball_speed = bs;
 }
 
 void ball::draw_me(QPainter *painter)
@@ -53,14 +56,14 @@ void ball::just_move()
     {
         if(move_right)
         {
-            py = py + 10;
-            px = px + 10;
+            py = py + ball_speed;
+            px = px + ball_speed;
         }
 
         if(move_left)
         {
-            py = py + 10;
-            px = px - 10;
+            py = py + ball_speed;
+            px = px - ball_speed;
         }
     }
 
@@ -68,21 +71,21 @@ void ball::just_move()
     {
         if(move_right)
         {
-            py = py - 10;
-            px = px + 10;
+            py = py - ball_speed;
+            px = px + ball_speed;
         }
 
         if(move_left)
         {
-            py = py - 10;
-            px = px - 10;
+            py = py - ball_speed;
+            px = px - ball_speed;
         }
     }
 
     else
     {
-        py = py + 10;
-        px = px + 10;
+        py = py + ball_speed;
+        px = px + ball_speed;
     }
 }
 
@@ -92,14 +95,14 @@ void ball::border_height_check(int dir)
     {
         move_down = true;
         move_up = false;
-        py = py + 10; //moving down
+        py = py + ball_speed; //moving down
     }
 
     if(dir == 1)
     {
         move_up = true;
         move_down = false;
-        py = py - 10;
+        py = py - ball_speed;
     }
 
 }
@@ -120,12 +123,12 @@ void ball::border_width_check(int dir)
 
     if(dir == 4)
     {
-        px = px + 10;
+        px = px + ball_speed;
     }
 
     if(dir == 5)
     {
-        px = px - 10;
+        px = px - ball_speed;
     }
 
     if(move_up)
@@ -153,10 +156,13 @@ bool ball::set_start()
 void ball::reset()
 {
     px = 550;
-    py = 450;
+    int p_y = rand()%(850-20 + 1) + 20;
+    py = p_y;
+    int bs = rand()%(40-5 + 1) + 5;
+    ball_speed = bs;
     start = false;
     move_up = false;
-    move_down = false;
+    move_down = true;
     move_right = true;
     move_left = false;
     center_point = QPoint(px,py);
