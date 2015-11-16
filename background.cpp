@@ -2,8 +2,8 @@
 
 background::background()
 {
-    width = 900;
-    height = 700;
+    width = 1100;
+    height = 900;
     left_score = 0;
     left = QString::number(left_score);
     right_score = 0;
