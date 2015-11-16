@@ -30,6 +30,8 @@ void ball::draw_me(QPainter *painter)
 //1 = hit the botom
 //2 = move right
 //3 = move left
+//4 = bounce off racket
+//5 = bounce off racket
 //6 = just move it
 void ball::update_me(int dir)
 {
@@ -89,6 +91,7 @@ void ball::just_move()
     }
 }
 
+//check for top hit
 void ball::border_height_check(int dir)
 {
     if(dir == 0)
@@ -107,6 +110,7 @@ void ball::border_height_check(int dir)
 
 }
 
+//check for side hit
 void ball::border_width_check(int dir)
 {
     if(dir == 2)

@@ -3,7 +3,7 @@
 
 racket::racket()
 {
-    move_incr = 50;
+    move_incr = 75;
 
     width = 30;
     height = 150;

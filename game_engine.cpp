@@ -26,7 +26,7 @@ void game_engine::update_me() //main logic
     else if(ball_point.ry()+30 >= 920) //case for when ball hits bottom border
         use_ball->update_me(1);
 
-    else if(!bounced_r && ball_point.rx()+15 >= right_racket.rx()) //case for right border/racket
+    else if(!bounced_r && ball_point.rx()+20 >= right_racket.rx()) //case for right border/racket
         right_bounce(ball_point, right_racket);
 
     else if(!bounced_l && ball_point.rx()-20 <= left_racket.rx() + 30) //case for left border/racket
@@ -58,7 +58,7 @@ void game_engine::right_bounce(QPoint b_point, QPoint r_point)
         if(b_point.rx()+30 >= 1100)
         {
             use_ball->reset();
-            use_pong->set_rs(++cur_r_score);
+            use_pong->set_rs(++cur_l_score);
             bounced_l = false;
             bounced_r = false;
         }
@@ -86,7 +86,7 @@ void game_engine::left_bounce(QPoint b_point, QPoint l_point)
         if(b_point.rx()+30 <= 0)
         {
             use_ball->reset();
-            use_pong->set_ls(++cur_l_score);
+            use_pong->set_ls(++cur_r_score);
             bounced_l = false;
             bounced_r = false;
         }
