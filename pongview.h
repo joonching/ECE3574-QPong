@@ -26,13 +26,16 @@ public:
     void choose_dir();
     QPoint get_left_racket();
     QPoint get_right_racket();
-    //void get_right_racket();
+    void set_rs(int score);
+    void set_ls(int score);
+    bool get_quit();
 
 signals:
     void send_direction(int play_dir);
 
 private:
     QSet<int> pressedKey;
+    bool quit;
     intermediate *inter;
 };
 

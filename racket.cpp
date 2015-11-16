@@ -3,6 +3,8 @@
 
 racket::racket()
 {
+    move_incr = 30;
+
     width = 30;
     height = 150;
     left_x = 10;
@@ -61,12 +63,12 @@ void racket::move_r(int sign) //player 2
 {
     if(sign == 0 && right_y < y_range)
     {
-        right_y = right_y + 10;
+        right_y = right_y + move_incr;
     }
 
     else if(sign == 1 && right_y > y_range2)
     {
-        right_y = right_y - 10;
+        right_y = right_y - move_incr;
     }
 }
 
@@ -77,12 +79,12 @@ void racket::move_l(int sign) //player 1
     //qDebug() << "movel\n";
     if(sign == 0 && left_y < y_range)
     {
-        left_y = left_y + 10;
+        left_y = left_y + move_incr;
     }
 
     else if(sign == 1 && left_y > y_range2)
     {
-        left_y = left_y - 10;
+        left_y = left_y - move_incr;
     }
 }
 
@@ -94,32 +96,32 @@ void racket::move_both_ud(int sign)
     {
         if(right_y < y_range && left_y < y_range)
         {
-            right_y = right_y + 10;
-            left_y = left_y + 10;
+            right_y = right_y + move_incr;
+            left_y = left_y + move_incr;
         }
         else if(right_y < y_range)
         {
-            right_y = right_y + 10;
+            right_y = right_y + move_incr;
         }
 
         else if(left_y < y_range)
-            left_y = left_y + 10;
+            left_y = left_y + move_incr;
     }
 
     else if(sign == 1)
     {
         if(right_y > y_range2 && left_y > y_range2)
         {
-            right_y = right_y - 10;
-            left_y = left_y - 10;
+            right_y = right_y - move_incr;
+            left_y = left_y - move_incr;
         }
         else if(right_y > y_range2)
         {
-            right_y = right_y - 10;
+            right_y = right_y - move_incr;
         }
 
         else if(left_y > y_range2)
-            left_y = left_y - 10;
+            left_y = left_y - move_incr;
     }
 }
 
@@ -132,30 +134,30 @@ void racket::move_opposite(int sign)
         //qDebug() << "here\n";
         if(left_y > y_range2 && right_y < y_range)
         {
-            left_y = left_y - 10;
-            right_y = right_y + 10;
+            left_y = left_y - move_incr;
+            right_y = right_y + move_incr;
         }
 
         else if(left_y > y_range2)
-            left_y = left_y - 10;
+            left_y = left_y - move_incr;
 
         else if(right_y < y_range)
-            right_y = right_y + 10;
+            right_y = right_y + move_incr;
     }
 
     else if(sign == 1)
     {
         if(right_y > y_range2 && left_y < y_range)
         {
-            right_y = right_y - 10;
-            left_y = left_y + 10;
+            right_y = right_y - move_incr;
+            left_y = left_y + move_incr;
         }
 
         else if(right_y > y_range2)
-            right_y = right_y - 10;
+            right_y = right_y - move_incr;
 
         else if(left_y < y_range)
-            left_y = left_y + 10;
+            left_y = left_y + move_incr;
     }
 
 }

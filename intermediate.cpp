@@ -27,3 +27,13 @@ QPoint intermediate::get_right_racket()
 {
     return my_vector[1]->get_right_racket();
 }
+
+void intermediate::set_ls(int score)
+{
+    my_vector[0]->set_left_score(score);
+}
+
+void intermediate::set_rs(int score)
+{
+    my_vector[0]->set_right_score(score);
+}

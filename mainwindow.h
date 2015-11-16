@@ -21,6 +21,7 @@ class mainwindow:public QWidget
 public:
     mainwindow(QWidget *parent = 0);
     void paintEvent(QPaintEvent *event);
+    void quit();
 
 private:
     pongview *my_pong;

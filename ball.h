@@ -17,7 +17,12 @@ public:
     void border_width_check(int dir);
     void just_move();
     void update_me(int dir);
+    void reset();
     QPoint get_points();
+    bool set_start();
+
+public slots:
+    void delay();
 
 private:
     QPoint center_point;
@@ -25,6 +30,7 @@ private:
     int rx, ry;
     int move_x, move_y;
     bool move_down, move_up, move_right, move_left;
+    bool start;
 };
 
 

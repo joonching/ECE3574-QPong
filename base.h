@@ -11,6 +11,8 @@ public:
     virtual void move_rackets(int dir) = 0;
     virtual QPoint get_left_racket() = 0;
     virtual QPoint get_right_racket() = 0;
+    virtual void set_right_score(int score) = 0;
+    virtual void set_left_score(int score) = 0;
 };
 
 #endif // BASE_H

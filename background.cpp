@@ -21,3 +21,15 @@ void background::draw(QPainter *painter)
     painter->drawText(text_left, left);
     painter->drawText(text_right, right);
 }
+
+void background::set_left_score(int score)
+{
+    left_score = score;
+    left = QString::number(left_score);
+}
+
+void background::set_right_score(int score)
+{
+    right_score = score;
+    right = QString::number(right_score);
+}

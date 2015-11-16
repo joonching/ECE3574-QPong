@@ -17,6 +17,8 @@ public:
     void int_move(int dir);
     QPoint get_left_racket();
     QPoint get_right_racket();
+    void set_rs(int score);
+    void set_ls(int score);
 
 
 private:

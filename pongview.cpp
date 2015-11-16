@@ -5,6 +5,7 @@
 
 pongview::pongview(QWidget *parent):QWidget(parent)
 {
+    quit = false;
     this->installEventFilter(this);
     inter = new intermediate();
     QSize size(1100,900);
@@ -36,7 +37,10 @@ bool pongview::eventFilter(QObject *obj, QEvent *event)
 
 void pongview::choose_dir()
 {
-    if(pressedKey.contains(Qt::Key_S)&&pressedKey.contains(Qt::Key_K))
+    if(pressedKey.contains(Qt::Key_Q))
+        quit = true;
+
+    else if(pressedKey.contains(Qt::Key_S)&&pressedKey.contains(Qt::Key_K))
         inter->int_move(7);
 
     else if(pressedKey.contains(Qt::Key_A)&&pressedKey.contains(Qt::Key_L))
@@ -70,4 +74,20 @@ QPoint pongview::get_left_racket()
 QPoint pongview::get_right_racket()
 {
     return inter->get_right_racket();
+}
+
+
+void pongview::set_ls(int score)
+{
+    inter->set_ls(score);
+}
+
+void pongview::set_rs(int score)
+{
+    inter->set_rs(score);
+}
+
+bool pongview::get_quit()
+{
+    return quit;
 }

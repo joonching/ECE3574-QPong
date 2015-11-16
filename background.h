@@ -16,6 +16,8 @@ public:
     virtual void move_rackets(int dir){}
     virtual QPoint get_left_racket(){}
     virtual QPoint get_right_racket(){}
+    virtual void set_right_score(int score);
+    virtual void set_left_score(int score);
 
 private:
     int width, height;

@@ -12,6 +12,8 @@ class game_engine: public QWidget
 public:
     game_engine(QWidget *parent = 0);
     void get_object(ball* ball_me, pongview* view_me);
+    void right_bounce(QPoint b_point, QPoint r_point);
+    void left_bounce(QPoint b_point, QPoint l_point);
 
 public slots:
     void update_me();
@@ -22,6 +24,7 @@ private:
     bool bounced_r, bounced_l;
     QPoint ball_point;
     QPoint left_racket, right_racket;
+    int cur_r_score, cur_l_score;
 };
 
 #endif // GAME_ENGINE_H
