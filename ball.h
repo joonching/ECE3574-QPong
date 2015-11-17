@@ -18,6 +18,7 @@ public:
     void just_move();
     void update_me(int dir);
     void reset();
+    void pick_rand();
     QPoint get_points();
     bool set_start();
 

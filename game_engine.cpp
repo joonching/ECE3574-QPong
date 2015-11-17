@@ -58,7 +58,7 @@ void game_engine::right_bounce(QPoint b_point, QPoint r_point)
         if(b_point.rx()+30 >= 1100)
         {
             use_ball->reset();
-            use_pong->set_rs(++cur_l_score);
+            use_pong->set_ls(++cur_l_score);
             bounced_l = false;
             bounced_r = false;
         }
@@ -86,7 +86,7 @@ void game_engine::left_bounce(QPoint b_point, QPoint l_point)
         if(b_point.rx()+30 <= 0)
         {
             use_ball->reset();
-            use_pong->set_ls(++cur_r_score);
+            use_pong->set_rs(++cur_r_score);
             bounced_l = false;
             bounced_r = false;
         }

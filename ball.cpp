@@ -11,8 +11,8 @@ ball::ball(QWidget *parent) : QWidget(parent)
     rx = 15;
     ry = 15;
     move_up = false;
-    move_down = true;
-    move_right = true;
+    move_down = false;
+    move_right = false;
     move_left = false;
     start = false;
     int bs = rand()%(40-5 + 1) + 5;
@@ -85,10 +85,7 @@ void ball::just_move()
     }
 
     else
-    {
-        py = py + ball_speed;
-        px = px + ball_speed;
-    }
+        pick_rand();
 }
 
 //check for top hit
@@ -141,6 +138,34 @@ void ball::border_width_check(int dir)
         border_height_check(0);
 }
 
+void ball::pick_rand()
+{
+    int rand_me = rand()%10;
+    int rand_2 = rand()%20;
+    qDebug() << "here\n";
+    if(rand_me%2 == 0)
+    {
+        move_up = true;
+        move_down = false;
+    }
+    else
+    {
+        move_down = true;
+        move_up = false;
+    }
+
+    if(rand_2%5 == 0)
+    {
+        move_left = true;
+        move_right = false;
+    }
+    else
+    {
+        move_right = true;
+        move_left = false;
+    }
+}
+
 QPoint ball::get_points()
 {
     QPoint temp = QPoint(px,py);
@@ -166,8 +191,8 @@ void ball::reset()
     ball_speed = bs;
     start = false;
     move_up = false;
-    move_down = true;
-    move_right = true;
+    move_down = false;
+    move_right = false;
     move_left = false;
     center_point = QPoint(px,py);
     QTimer::singleShot(3000, this, SLOT(delay()));

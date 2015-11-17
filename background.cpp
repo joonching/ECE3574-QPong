@@ -1,5 +1,5 @@
 #include "background.h"
-
+#include <QPen>
 background::background()
 {
     width = 1100;
@@ -16,7 +16,11 @@ void background::draw(QPainter *painter)
 {
     painter->fillRect(0,0,width, height, QBrush(Qt::black,Qt::SolidPattern));
     painter->drawRect(0,0,width,height);
-    painter->setPen(Qt::white);
+
+    QPen temp;
+    temp.setBrush(Qt::white);
+    temp.setStyle(Qt::DashLine);
+    painter->setPen(temp);
     painter->drawLine(width/2,0,width/2,height);
     painter->drawText(text_left, left);
     painter->drawText(text_right, right);
