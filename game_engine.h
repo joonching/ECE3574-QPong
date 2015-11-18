@@ -12,11 +12,19 @@ class game_engine: public QWidget
 public:
     game_engine(QWidget *parent = 0);
     void get_object(ball* ball_me, pongview* view_me);
-    void right_bounce(QPoint b_point, QPoint r_point);
-    void left_bounce(QPoint b_point, QPoint l_point);
+    void right_bounce(int x, int y, QPoint r_point);
+    void left_bounce(int x, int y, QPoint l_point);
+    void border_height_check(int dir);
+    void border_width_check(int dir);
+    void just_move();
+    void new_update(int dir);
+    void reset();
+    void pick_rand();
+
 
 public slots:
     void update_me();
+    void delay();
 
 private:
     ball* use_ball;
@@ -25,6 +33,11 @@ private:
     QPoint ball_point;
     QPoint left_racket, right_racket;
     int cur_r_score, cur_l_score;
+    int px, py;
+    int ball_speed;
+    bool move_left, move_right, move_down, move_up;
+    bool start;
+
 };
 
 #endif // GAME_ENGINE_H

@@ -14,9 +14,9 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent)
     QHBoxLayout *layoutH = new QHBoxLayout;
     my_pong->setFocus();
 
-    QTimer::singleShot(3000, my_ball, SLOT(delay()));
+    QTimer::singleShot(3000, g_engine, SLOT(delay()));
     connect(timer, SIGNAL(timeout()), g_engine , SLOT(update_me()));
-    timer->start(60);
+    timer->start(17);
 
     layoutH->addWidget(my_pong);
     layoutH->setAlignment(Qt::AlignHCenter);
