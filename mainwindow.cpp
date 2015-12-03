@@ -12,7 +12,9 @@ mainwindow::mainwindow(QWidget *parent) :
     timer = new QTimer(this);
     //my safety mech
     g_engine = new game_engine(safety);
-
+    g_engine->get_object(my_ball, my_pong);
+    g_engine->moveToThread(&create_thread);
+    create_thread.start();
 
     QHBoxLayout *layoutH = new QHBoxLayout;
     installEventFilter(my_pong);
@@ -30,7 +32,7 @@ mainwindow::mainwindow(QWidget *parent) :
 void mainwindow::paintEvent(QPaintEvent *event)
 {
     //my safety mech
-
+    std::lock_guard<std::mutex> lock(safety);
     QPainter *painter = new QPainter(this);
     my_pong->paint_me(painter);
     my_ball->draw_me(painter);
