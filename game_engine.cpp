@@ -2,10 +2,12 @@
 #include <QDebug>
 #include <QTimer>
 
-game_engine::game_engine(QWidget *parent) : QWidget(parent)
+
+game_engine::game_engine(std::mutex &x) : game_safety(x)
 {
-    use_ball = new ball(this);
-    use_pong = new pongview(this);
+    use_ball = new ball;
+    use_pong = new pongview;
+    timer = new QTimer;
     bounced_r = false;
     bounced_l = false;
     left_racket = use_pong->get_left_racket();
@@ -22,6 +24,11 @@ game_engine::game_engine(QWidget *parent) : QWidget(parent)
     move_up = false;
     move_down = false;
     start = false;
+
+    //QTimer::singleShot(3000, g_engine, SLOT(delay()));
+
+    //connect(timer, SIGNAL(timeout()), this , SLOT(update_me()));
+    //timer->start(17);
 }
 
 
@@ -34,6 +41,8 @@ game_engine::game_engine(QWidget *parent) : QWidget(parent)
 //6 = just move it
 void game_engine::update_me() //main logic
 {
+    //my saftey mech
+    std::lock_guard<std::mutex> lock(game_safety);
     right_racket = use_pong->get_right_racket();
     left_racket = use_pong->get_left_racket();
     use_ball->set_points(px,py);
@@ -250,4 +259,9 @@ void game_engine::reset()
     move_down = false;
     start = false;
     QTimer::singleShot(3000, this, SLOT(delay()));
+}
+
+void game_engine::set_start()
+{
+    start = true;
 }

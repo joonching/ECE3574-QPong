@@ -11,6 +11,8 @@
 #include <QHBoxLayout>
 #include <QTimer>
 #include <QPainter>
+#include <QThread>
+#include <mutex>
 
 #include "pongview.h"
 #include "ball.h"
@@ -22,12 +24,15 @@ public:
     mainwindow(QWidget *parent = 0);
     void paintEvent(QPaintEvent *event);
     void quit();
+    pongview* getMyPong();
 
 private:
     pongview *my_pong;
     QTimer *timer;
     ball *my_ball;
     game_engine *g_engine;
+    QThread create_thread;
+    std::mutex safety;
 
 };
 
